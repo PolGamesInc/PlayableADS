@@ -12,12 +12,15 @@ public class TapGo : MonoBehaviour
     [SerializeField] private Animator FogAnimator;
     [SerializeField] private Animator CarTaxiBarier;
 
+    public Animator ManholesAnimator;
+
     [SerializeField] private GameObject Fog;
     [SerializeField] private GameObject Bike;
     [SerializeField] private GameObject Cursor;
     [SerializeField] private GameObject CarTaxi;
     [SerializeField] private GameObject BarierObject;
     [SerializeField] private GameObject MiniGameRoad;
+    public GameObject Manholes;
     private string animationTrigger = "ClickGo";
 
     public GameObject TapMiniGameScript;
@@ -31,6 +34,8 @@ public class TapGo : MonoBehaviour
         MiniGameRoad.SetActive(false);
         Fog.SetActive(false);
         CarTaxiBarier.enabled = false;
+        Manholes.SetActive(false);
+        ManholesAnimator.enabled = false;
     }
 
     public void OnClickGoButton()
@@ -63,5 +68,8 @@ public class TapGo : MonoBehaviour
         FogAnimator.SetTrigger(animationTrigger);
         TapMiniGameScript.GetComponent<TapMiniGame>().ButtomLine1.SetActive(true);
         TapMiniGameScript.GetComponent<TapMiniGame>().Cursor2.SetActive(true);
+        ManholesAnimator.enabled = true;
+        Manholes.SetActive(true);
+        ManholesAnimator.SetTrigger(animationTrigger);
     }
 }

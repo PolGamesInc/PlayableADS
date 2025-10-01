@@ -7,6 +7,7 @@ public class TapMiniGameLine2 : MonoBehaviour
     [SerializeField] private Animator ChickAnimator;
     [SerializeField] private Animator Cars;
     [SerializeField] private Animator Win;
+    [SerializeField] private Animator manholesTwo;
 
     public GameObject Line2Object;
     public GameObject ButtomLine2;
@@ -16,6 +17,7 @@ public class TapMiniGameLine2 : MonoBehaviour
 
     [SerializeField] private GameObject CarsObject;
     [SerializeField] private GameObject Chick;
+    public GameObject ManholesTwoObject;
 
     [SerializeField] private GameObject CanvasObject;
 
@@ -29,6 +31,7 @@ public class TapMiniGameLine2 : MonoBehaviour
         Chick.SetActive(false);
         CarsObject.SetActive(false);
         WinObject.SetActive(false);
+        ManholesTwoObject.SetActive(false);
     }
 
     public void OnClickLine2()
@@ -73,5 +76,12 @@ public class TapMiniGameLine2 : MonoBehaviour
         WinObject.SetActive(false);
         CanvasObject.GetComponent<TapMiniGameLine3>().Cursor4.SetActive(true);
         CanvasObject.GetComponent<TapMiniGameLine3>().ButtomLine3.SetActive(true);
+        StartCoroutine(WaitManholeOne());
+    }
+
+    private IEnumerator WaitManholeOne()
+    {
+        yield return new WaitForSeconds(0.4f);
+        manholesTwo.SetTrigger(animationTrigger);
     }
 }
